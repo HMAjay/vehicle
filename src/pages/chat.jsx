@@ -17,7 +17,7 @@ function Chat() {
 
   // 🔹 Fetch chat messages
   useEffect(() => {
-    fetch(`http://localhost:3000/messages/chat/${userId}/${loggedUser._id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/messages/chat/${userId}/${loggedUser._id}`)
       .then(res => res.json())
       .then(data => setMessages(data))
       .catch(err => console.error(err));
@@ -31,7 +31,7 @@ function Chat() {
   const sendMessage = async () => {
     if (!text.trim()) return;
 
-    const res = await fetch("http://localhost:3000/messages/send", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/messages/send`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

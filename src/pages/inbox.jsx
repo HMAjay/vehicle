@@ -16,7 +16,7 @@ useEffect(() => {
 
 
 const fetchInbox = () => {
-  fetch(`http://localhost:3000/messages/inbox/${user._id}`)
+  fetch(`${import.meta.env.VITE_API_URL}/messages/inbox/${user._id}`)
     .then(res => res.json())
     .then(data => setChats(data))
     .catch(err => console.error(err));

@@ -24,7 +24,7 @@ export default function Dashboard() {
     if (!user?._id) return;
 
     const fetchUnreadCount = () => {
-      fetch(`http://localhost:3000/messages/inbox/${user._id}`)
+      fetch(`${import.meta.env.VITE_API_URL}/messages/inbox/${user._id}`)
         .then(res => res.json())
         .then(data => {
           const count = data.filter(chat => chat.hasUnread).length;
@@ -53,7 +53,7 @@ export default function Dashboard() {
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/vehicles/${vehicleNumber}`);
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/vehicles/${vehicleNumber}`);
 
       if (!res.ok) {
         alert("Vehicle not found");
